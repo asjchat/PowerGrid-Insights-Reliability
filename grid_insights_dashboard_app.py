@@ -22,6 +22,38 @@ import plotly.express as px
 import dash
 from dash import dcc, html, Input, Output
 
+# ---- Style + copy constants ----
+SUBTEXT_STYLE = {
+    "textAlign": "center",
+    "color": "#6c757d",
+    "fontSize": "14px",
+    "margin": "0 auto 12px",
+    "maxWidth": "900px",
+}
+
+CARD_STYLE = {
+    "border": "1px solid #e5e7eb",
+    "borderRadius": "10px",
+    "padding": "12px 14px",
+    "margin": "8px 0",
+    "boxShadow": "0 1px 2px rgba(0,0,0,0.05)",
+    "backgroundColor": "white",
+}
+
+CONTAINER_STYLE = {
+    "maxWidth": "900px",
+    "margin": "0 auto 20px",
+}
+
+EXEC_SUMMARY_MD = """
+**Executive summary**
+
+- **SAIDI** (duration) is most sensitive to **storms/major events**, **crew response**, and **automation**.
+- **SAIFI** (frequency) correlates strongly with **vegetation exposure**, **weather**, and **asset age**.
+- Use the map to inspect a year’s conditions; click states to compare their **trends** on the right.
+"""
+
+
 # Load the consolidated dataset.  It is expected to live in the same
 # directory as this script.  The dataset contains state names, years
 # and nine metric columns (CAIDI/SAIDI/SAIFI × 3 categories).  We
@@ -339,4 +371,5 @@ def update_line(metric: str, category: str, click_data):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run(debug=True)
+
