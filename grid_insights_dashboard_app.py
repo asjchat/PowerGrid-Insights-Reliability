@@ -22,6 +22,12 @@ import plotly.express as px
 import dash
 from dash import dcc, html, Input, Output
 
+# create Dash app
+app = dash.Dash(__name__)
+# EXPOSE THE WSGI SERVER FOR GUNICORN:
+server = app.server
+
+
 # ---- Style + copy constants ----
 SUBTEXT_STYLE = {
     "textAlign": "center",
@@ -371,5 +377,6 @@ def update_line(metric: str, category: str, click_data):
 
 
 if __name__ == "__main__":
+    # Dash 3.x uses .run(), NOT .run_server()
     app.run(debug=True)
 
